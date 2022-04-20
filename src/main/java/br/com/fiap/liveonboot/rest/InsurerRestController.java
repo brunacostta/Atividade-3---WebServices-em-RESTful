@@ -45,12 +45,12 @@ public class InsurerRestController {
 	@SuppressWarnings("rawtypes")
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	@CrossOrigin("*")
-	public ResponseEntity post(@RequestBody Insurer funcionario) {
-		funcionario.setId(UUID.randomUUID());
-		repository.save(funcionario);
+	public ResponseEntity post(@RequestBody Insurer insurer) {
+		insurer.setId(UUID.randomUUID());
+		repository.save(insurer);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(funcionario.getId()).toUri();
+				.buildAndExpand(insurer.getId()).toUri();
 
 		return ResponseEntity.created(location).build();
 

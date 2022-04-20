@@ -34,12 +34,12 @@ public class ClientRestController {
 	@SuppressWarnings("rawtypes")
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	@CrossOrigin("*")
-	public ResponseEntity post(@RequestBody Client funcionario) {
+	public ResponseEntity post(@RequestBody Client client) {
 
-		repository.save(funcionario);
+		repository.save(client);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(funcionario.getId()).toUri();
+				.buildAndExpand(client.getId()).toUri();
 
 		return ResponseEntity.created(location).build();
 
